@@ -7,7 +7,8 @@ Files served from the www folder (/local/ URL), aren’t protected by the Home A
 https://www.home-assistant.io/integrations/http/#hosting-files
 
 2) copy tvv.html and dreammotelang.png to /www folder
+3) edit the ip in de html code to your sat decoder ip
 
-3) add a webpage card ( according image homeAssitant config card .png)
+4) add a webpage card ( according image homeAssitant config card .png)
 
 
