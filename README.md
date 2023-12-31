@@ -11,4 +11,6 @@ https://www.home-assistant.io/integrations/http/#hosting-files
 
 4) add a webpage card ( according image homeAssitant config card .png)
 
+5) info : https://community.home-assistant.io/t/a-simple-remote-control-to-sat-recievers-openwebif-openpli/664094
+
 
