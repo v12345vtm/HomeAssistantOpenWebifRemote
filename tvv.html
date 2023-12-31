@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <style>
+         .container {
+         position: relative;
+         width: 600px;
+         }
+         .image {
+         display: block;
+         width: 60%;
+         height: auto;
+         }
+         .link {
+         position: absolute;
+         top: 50px;
+         left: 50px;
+         //transform: translate(-50%, -50%);
+         z-index: 1;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         <img class="image" src="http://192.168.1.64:8123/local/dreammotelang.png" alt="Description of the image">
+      </div>
+      <p id="demo" style="  color: white  ;position: absolute; top: 45px ;left: 105px">***</p>
+      <button type="button" onclick="location.reload()" style="position: absolute; top: 40px ;left: 25px"  >Refresh</button>
+      <button type="button" class="buttongroot" onclick="kvolp()" style="position: absolute; top: 377px ;left: 15px" >volume+1</button>
+      <button type="button" class="buttongroot" onclick="kvolm()" style="position: absolute; top: 440px ;left: 15px" >volume-1</button>
+      <button type="button" class="buttongroot" onclick="km2()" style="position: absolute; top: 440px ;left: 285px" >zap -1</button>
+      <button type="button" class="buttongroot" onclick="kp1()" style="position: absolute; top: 377px ;left: 285px" >zap +1</button>
+      <br><br>
+      <button type="button" class="button" onclick="sendCommand(2)" style="position: absolute; top: 100px ;left: 42px" >1</button >
+      <button type="button" class="button" onclick="sendCommand(3)" style="position: absolute; top: 100px ;left: 165px">2</button>
+      <button type="button" class="button" onclick="sendCommand(4)" style="position: absolute; top: 100px ;left: 290px">3</button>
+      <button type="button" class="button" onclick="sendCommand(5)" style="position: absolute; top: 160px ;left: 42px">4</button>
+      <button type="button" class="button" onclick="sendCommand(6)" style="position: absolute; top: 160px ;left: 165px">5</button>  <br><br><br>
+      <button type="button" class="button" onclick="sendCommand(7)" style="position: absolute; top: 160px ;left: 290px">6</button>
+      <button type="button" class="button" onclick="sendCommand(8)" style="position: absolute; top: 220px ;left: 42px">7</button>
+      <button type="button" class="button" onclick="sendCommand(9)" style="position: absolute; top: 220px ;left: 165px">8</button>
+      <button type="button" class="button" onclick="sendCommand(10)" style="position: absolute; top: 220px ;left: 290px">9</button>
+      <button type="button" class="button" onclick="sendCommand(11)" style="position: absolute; top: 280px ;left: 165px">0</button>
+      <br><br><br>
+      <button type="button" class="button" onclick="kgids()" style="position: absolute; top: 710px ;left: 30px" >EPG</button>
+      <button type="button" class="button" onclick="kmexit()" style="position: absolute; top: 360px ;left: 159px" >exit</button>
+      <br><br><br>
+      <button type="button" class="button" onclick="klinks()" style="position: absolute; top: 630px ;left: 85px" ><---</button>
+      <button type="button" class="button" onclick="kmrechts()" style="position: absolute; top: 630px ;left: 250px" >---></button>
+      <br><br><br>
+      <button type="button" class="button" onclick="kup()" style="position: absolute; top: 550px ;left: 170px">/\</button>
+      <button type="button" class="button" onclick="kmok()" style="position: absolute; top: 630px ;left: 170px" >ok</button>
+      <button type="button" class="button" onclick="kmdown()" style="position: absolute; top: 710px ;left: 170px" >\/</button>
+      <br><br>
+      <button type="button" class="button" onclick="kmok2x()"  style="position: absolute; top: 540px ;left: 29px">info</button>
+      <button type="button" class="buttongroot" onclick="kopname()" style="position: absolute; top: 710px ;left: 290px"  >opnames</button>
+      <script>
+         function sendCommand(command) {
+           var xhttp = new XMLHttpRequest();
+           xhttp.onreadystatechange = function() {
+         
+          document.getElementById("demo").innerHTML = xhttp.readyState;
+             if (xhttp.readyState == 4 && xhttp.status == 200) {
+               document.getElementById("demo").innerHTML = " gelukt zonder problemen :cmd " + command;
+             }
+         
+               if (xhttp.readyState == 4 ) {
+               document.getElementById("demo").innerHTML = "cmd " + command;
+             }
+           };
+           xhttp.open("GET", "http://192.168.1.9/api/remotecontrol?command=" + command, true);
+           xhttp.send();
+         }
+         
+         function kvolp() {
+           sendCommand(115);
+         }
+         
+         function kvolm() {
+           sendCommand(114);
+         }
+         
+         function km2() {
+           sendCommand(105);
+         }
+         
+         function kp1() {
+           sendCommand(106);
+         }
+         
+         function kgids() {
+           sendCommand(365);
+         }
+         
+         function kup() {
+           sendCommand(103);
+         }
+         
+         function kmexit() {
+           sendCommand(174);
+         }
+         
+         function klinks() {
+           sendCommand(105);
+         }
+         
+         function kmok() {
+           sendCommand(352);
+         }
+         
+         function kmrechts() {
+           sendCommand(106);
+         }
+         
+         function kmdown() {
+           sendCommand(108);
+         }
+         
+         function kmok2x() {
+           sendCommand(352);
+           sendCommand(352);
+         }
+         
+         function kopname() {
+           sendCommand(393);
+         }
+      </script>
+   </body>
+</html>
